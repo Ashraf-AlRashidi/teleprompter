@@ -34,7 +34,7 @@ body {
 
 /* --- Video Section --- */
 .video-section {
-  flex: 1;
+  flex: 6;
   position: relative;
   background-color: #000;
   border-left: 2px solid var(--border-color);
@@ -44,11 +44,11 @@ body {
   overflow: hidden;
 }
 
-#webcam {
+canvas#composed-canvas {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
+  object-fit: contain;
+  cursor: default;
 }
 
 .video-controls {
@@ -62,6 +62,11 @@ body {
   z-index: 10;
 }
 
+.left-controls {
+  display: flex;
+  gap: 10px;
+}
+
 .recording-controls {
   display: flex;
   gap: 10px;
@@ -69,7 +74,7 @@ body {
 
 /* --- Text Section --- */
 .text-section {
-  flex: 1;
+  flex: 4;
   position: relative;
   display: flex;
   flex-direction: column;

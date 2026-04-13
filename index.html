@@ -15,13 +15,18 @@
     <div id="app">
       <!-- Video Section -->
       <section class="video-section">
-        <video id="webcam" autoplay playsinline muted></video>
+        <canvas id="composed-canvas" width="1920" height="1080"></canvas>
+        <video id="camera-video" autoplay playsinline muted class="hidden"></video>
+        <video id="screen-video" autoplay playsinline muted class="hidden"></video>
         
         <!-- Controls overlay on video -->
         <div class="video-controls">
-          <button id="mirror-btn" class="btn" title="عكس الكاميرا">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m3 7 5 5-5 5"/><path d="m21 17-5-5 5-5"/></svg>
-          </button>
+          <div class="left-controls">
+            <button id="share-screen-btn" class="btn btn-primary" title="مشاركة الشاشة">💻 مشاركة البرزنتيشن</button>
+            <button id="mirror-btn" class="btn" title="عكس الكاميرا">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m3 7 5 5-5 5"/><path d="m21 17-5-5 5-5"/></svg>
+            </button>
+          </div>
           <div class="recording-controls">
             <button id="record-btn" class="btn btn-record" title="بدء التسجيل">⏺ تسجيل</button>
             <button id="download-btn" class="btn btn-download hidden" title="تحميل الفيديو">⬇️ تحميل</button>
