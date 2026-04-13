@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>جهاز التلقين الذكي - Teleprompter</title>
+    <!-- Google Fonts for Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div id="app">
+      <!-- Video Section -->
+      <section class="video-section">
+        <video id="webcam" autoplay playsinline muted></video>
+        
+        <!-- Controls overlay on video -->
+        <div class="video-controls">
+          <button id="mirror-btn" class="btn" title="عكس الكاميرا">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m3 7 5 5-5 5"/><path d="m21 17-5-5 5-5"/></svg>
+          </button>
+          <div class="recording-controls">
+            <button id="record-btn" class="btn btn-record" title="بدء التسجيل">⏺ تسجيل</button>
+            <button id="download-btn" class="btn btn-download hidden" title="تحميل الفيديو">⬇️ تحميل</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Text Section -->
+      <section class="text-section">
+        
+        <div class="text-controls panel">
+          <div class="control-group">
+            <label for="speed-slider">السرعة:</label>
+            <input type="range" id="speed-slider" min="1" max="20" value="5">
+          </div>
+          <div class="control-group">
+            <label for="font-size-slider">حجم الخط:</label>
+            <input type="range" id="font-size-slider" min="20" max="100" value="48">
+          </div>
+          <div class="action-buttons">
+            <button id="play-pause-btn" class="btn btn-primary">▶ تشغيل (Space)</button>
+          </div>
+        </div>
+
+        <div class="prompter-container">
+          <div id="prompter-text" contenteditable="true" spellcheck="false" placeholder="اكتب أو الصق نص البرزنتيشن هنا...">أهلاً بك في جهاز التلقين الذكي! 
+
+هذه الأداة مصممة لمساعدتك في تقديم المحتوى بثقة واحترافية.
+
+يمكنك تعديل هذا النص، تغيير حجم الخط، وضبط سرعة التمرير بما يناسبك.
+
+للبدء، اضغط على زر التشغيل في الأسفل أو استخدم مسطرة المسافات (Spacebar).
+
+لا تنسى أنه يمكنك أيضاً تسجيل الفيديو أثناء القراءة!</div>
+        </div>
+      </section>
+    </div>
+    
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

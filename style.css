@@ -1,0 +1,227 @@
+:root {
+  --bg-dark: #0f172a;
+  --bg-panel: #1e293b;
+  --text-light: #f8fafc;
+  --text-muted: #cbd5e1;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --success: #22c55e;
+  --success-hover: #16a34a;
+  --border-color: #334155;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Cairo', 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  height: 100vh;
+  overflow: hidden;
+}
+
+#app {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* --- Video Section --- */
+.video-section {
+  flex: 1;
+  position: relative;
+  background-color: #000;
+  border-left: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#webcam {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.video-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.recording-controls {
+  display: flex;
+  gap: 10px;
+}
+
+/* --- Text Section --- */
+.text-section {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.reading-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0) 100%);
+  border-top: 2px solid var(--primary);
+  transform: translateY(-50%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.text-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(30, 41, 59, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  border-top: 1px solid var(--border-color);
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.control-group label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+input[type=range] {
+  accent-color: var(--primary);
+  width: 120px;
+}
+
+.prompter-container {
+  flex: 1;
+  overflow-y: scroll;
+  /* Hide scrollbar for a cleaner look */
+  scrollbar-width: none; 
+  scroll-behavior: auto; /* Handled by JS */
+}
+
+.prompter-container::-webkit-scrollbar {
+  display: none;
+}
+
+#prompter-text {
+  padding: 50% 40px; /* Padding top and bottom creates space to scroll */
+  font-size: 48px;
+  line-height: 1.6;
+  font-weight: 600;
+  outline: none;
+  min-height: 100%;
+  white-space: pre-wrap;
+  text-align: center;
+  direction: rtl;
+}
+
+/* --- Buttons --- */
+.btn {
+  background-color: var(--bg-panel);
+  color: var(--text-light);
+  border: 1px solid var(--border-color);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--border-color);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+.btn-record {
+  background-color: rgba(30, 41, 59, 0.8);
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.btn-record:hover {
+  background-color: var(--danger);
+  color: white;
+}
+
+.btn-record.recording {
+  background-color: var(--danger);
+  color: white;
+  animation: pulse 1.5s infinite;
+}
+
+.btn-download {
+  background-color: var(--success);
+  border-color: var(--success);
+  color: white;
+}
+
+.btn-download:hover {
+  background-color: var(--success-hover);
+}
+
+.hidden {
+  display: none !important;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; transform: scale(0.98); }
+  100% { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  #app {
+    flex-direction: column;
+  }
+  .video-section, .text-section {
+    height: 50vh;
+  }
+  .text-controls {
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+  }
+}
